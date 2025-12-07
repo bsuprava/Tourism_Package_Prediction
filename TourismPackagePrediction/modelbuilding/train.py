@@ -5,8 +5,6 @@ import numpy as np
 import sklearn
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.impute import SimpleImputer
-from sklearn.compose import make_column_transformer
-from sklearn.pipeline import make_pipeline
 
 # for model training, tuning, and evaluation
 import xgboost 
@@ -20,6 +18,11 @@ from sklearn.metrics import (
     f1_score,
     roc_auc_score
 )
+# for pipeline
+from sklearn.pipeline import Pipeline
+from sklearn.compose import make_column_transformer
+from sklearn.pipeline import make_pipeline
+
 # for model tracking
 import mlflow
 
