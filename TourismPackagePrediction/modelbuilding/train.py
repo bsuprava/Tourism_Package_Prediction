@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import sklearn
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.impute import SimpleImputer
 from sklearn.compose import make_column_transformer
 from sklearn.pipeline import make_pipeline
 
