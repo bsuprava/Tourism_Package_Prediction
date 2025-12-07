@@ -53,6 +53,32 @@ NumberOfFollowups = st.number_input("NumberOfFollowups (Number of follow-ups by 
 PitchSatisfactionScore = st.number_input("PitchSatisfactionScore (Pitch satisfaction score given by customer)", min_value=0, max_value=10, value=5)
 PreferredPropertyStar = st.number_input("PreferredPropertyStar (Preferred rating given by customer)", min_value=1, max_value=5, value=2)
 
+# Process Feature-engineered Columns
+def AgeGroup(age):
+    if age <= 18:
+        return 'Young'
+    elif 19 <= age <= 40:
+        return 'Adult'
+    else:
+        return 'Old'
+
+def IncomeCategory(income):
+    if income < 20000:
+        return 'Low'
+    elif 20000 <= income <= 30000:
+        return 'Mid'
+    else:
+        return 'High'
+
+def PitchPeriodCategory(pitch):
+    if pitch <= 10:
+        return 'Short'
+    elif 11 <= pitch <= 30:
+        return 'Long'
+    else:
+        return 'High'
+
+
 # Assemble input into DataFrame
 input_data = pd.DataFrame([{
     'Age': Age,
@@ -72,7 +98,12 @@ input_data = pd.DataFrame([{
     'DurationOfPitch': DurationOfPitch,
     'NumberOfFollowups': NumberOfFollowups,
     'PitchSatisfactionScore': PitchSatisfactionScore,
-    'PreferredPropertyStar': PreferredPropertyStar
+    'PreferredPropertyStar': PreferredPropertyStar,
+    # New derived features
+    'HasChildren': 1 if NumberOfChildrenVisiting > 0 else 0,
+    'AgeGroup': AgeGroup(Age),
+    'IncomeCategory': IncomeCategory(MonthlyIncome),
+    'PitchPeriodCategory': PitchPeriodCategory(DurationOfPitch)
 }])
 
 if st.button("Predict Purchase"):
