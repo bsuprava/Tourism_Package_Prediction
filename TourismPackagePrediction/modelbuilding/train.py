@@ -8,7 +8,8 @@ from sklearn.compose import make_column_transformer
 from sklearn.pipeline import make_pipeline
 
 # for model training, tuning, and evaluation
-import xgboost as xgb
+import xgboost 
+from xgboost import XGBClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import (
     classification_report,
@@ -64,7 +65,7 @@ categorical_features = X_train.select_dtypes(include=['object', 'category']).col
 # Set the clas weight to handle class imbalance
 class_weight = y_train.value_counts()[0] / y_train.value_counts()[1]
 
-tunedxgb = xgb.XGBClassifier(
+tunedxgb = XGBClassifier(
     objective="binary:logistic", 
     random_state=1,
     eval_metric='logloss',
