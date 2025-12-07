@@ -28,7 +28,7 @@ jobs:
       - name: Run Data Preparation
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: python TourismPackagePrediction/modelbuilding/prep.py
+        run: python TourismPackagePrediction/modelbuilding/data_prep.py
 
 
   model-traning:
