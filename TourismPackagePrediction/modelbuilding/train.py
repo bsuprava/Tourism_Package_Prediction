@@ -64,7 +64,7 @@ categorical_features = X_train.select_dtypes(include=['object', 'category']).col
 # Set the clas weight to handle class imbalance
 class_weight = y_train.value_counts()[0] / y_train.value_counts()[1]
 
-tunedxgb = XGBClassifier(
+tunedxgb = xgb.XGBClassifier(
     objective="binary:logistic", 
     random_state=1,
     eval_metric='logloss',
